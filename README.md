@@ -1,10 +1,6 @@
-![project](img/photo1.png)
-
 # Object-Oriented Programming Project Work
 
 ## ATM Operation Simulation System
-
-### Supervisor: MSc. Eng. Ewa Żesławska
 
 ### Author: Dawid Olko | Student ID: 125148 | Field of study: Computer Science, lab group 3
 
