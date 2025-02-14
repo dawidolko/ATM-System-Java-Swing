@@ -245,7 +245,7 @@ public class Dashboard extends JFrame{
             e.printStackTrace();
         }
         try {
-            File soundFile = new File("src/please_calm_my_mind.wav");
+            File soundFile = new File("please_calm_my_mind.wav");
             AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);
             clip = AudioSystem.getClip();
             clip.open(audioIn);

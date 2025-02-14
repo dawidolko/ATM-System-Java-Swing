@@ -16,6 +16,14 @@
 6. [Summary](#6-summary)
 7. [Literature](#7-literature)
 
+# Video on youtube:
+
+<a href="https://youtu.be/PrwN3nVvUKE">
+  <img src="img/youtube.png" width="50%" />
+</a>
+
+<hr>
+
 # 1. Project Assumptions Description
 
 In today's era, as the banking sector evolves with unprecedented speed, we encounter challenges related to technology adaptation and maintaining high-quality customer service. One of the key elements of this ecosystem is ATMs, which constitute an important point of contact with the customer. Unfortunately, with the increase in banking operations' complexity and growing customer expectations, ATMs often become the object of operational errors, failures, and even criminal activity. These problems, although not directly related to the bank's main activity, significantly affect the financial institution's image, customer satisfaction, and operational efficiency.
