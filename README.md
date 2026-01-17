@@ -4,8 +4,6 @@
 
 ### Author: Dawid Olko | Student ID: 125148 | Field of study: Computer Science, lab group 3
 
-### Rzeszów 2024
-
 ## Table of Contents
 
 1. [Project Assumptions Description](#1-project-assumptions-description)
@@ -61,42 +59,34 @@ Each of these features is implemented with maximum convenience and intuitiveness
 ### 2.1. Functional Requirements
 
 - **User Authentication:**
-
   - Verification of the cardholder based on the PIN number stored in the database.
   - Card lockout after three unsuccessful PIN entry attempts.
 
 - **Support for Different Types of Cards:**
-
   - Acceptance of various types of bank cards, including Visa, Mastercard, American Express, Visa Electron, Diners Club, and Japan Credit Bureau.
   - Dynamic recognition of card type based on user-entered data.
 
 - **Account Operations:**
-
   - Checking the account balance using information from the `account_status` table.
   - Cash withdrawal with balance update in the database.
   - Cash deposit with balance update in the database.
   - Displaying transaction history, using data from the `tablehistory` table.
 
 - **Data Management:**
-
   - Exporting data from the database to a file, allowing for easy restoration and data transfer.
   - Importing data into the database from a file, facilitating application state restoration.
 
 - **Security:**
-
   - Encryption of sensitive data during transmission between the application and the database.
   - Mechanisms to prevent attacks, employing `passwordField` to conceal the PIN.
 
 - **User Authentication:**
-
   - The system must enable user authorization using a bank card and PIN code.
 
 - **Financial Transactions:**
-
   - The ATM should support basic banking operations such as cash withdrawal, balance checking, cash deposit, and recording transaction confirmation in the database.
 
 - **Security and Audit:**
-
   - There should be the ability to track all operations on the ATM and ensure compliance with security requirements.
 
 - **User Interface:**
@@ -106,34 +96,27 @@ Each of these features is implemented with maximum convenience and intuitiveness
 ### 2.2. Non-Functional Requirements
 
 - **Performance:**
-
   - Quick and efficient response to user queries without long waiting times.
   - Optimization of database queries to ensure smooth operation.
 
 - **Usability:**
-
   - An intuitive user interface that is easy to navigate even for those unfamiliar with technology.
   - Clear and aesthetically pleasing presentation of information.
 
 - **Scalability:**
-
   - Ease of adding new features and handling a larger number of users without performance degradation.
 
 - **Availability:**
-
   - The application must be error-free on supported operating systems.
   - Recovery mechanisms to minimize downtime.
 
 - **Modularity:**
-
   - Application structure divided into modules, facilitating code management and changes.
 
 - **Continuous Availability:**
-
   - The ATM should be available 24/7/365, with minimal downtime.
 
 - **Security:**
-
   - Must include advanced encryption mechanisms and two-factor authentication to ensure the security of transactions.
 
 - **Testability:**
@@ -369,7 +352,6 @@ Overall Analysis: PinWindow is a crucial element of the banking application, ens
 - **"WELCOME TO YOUR ACCOUNT" Header**: Welcomes the user and confirms successful authorization.
 
 - **"SELECT OPERATION" Section**: A list of options the user can select from:
-
   - CHECK YOUR ACCOUNT STATE: Allows the user to check the current state of their account, such as the balance.
 
   - CASH PAYCHECK: A function that enables the user to withdraw funds from their account.
@@ -425,7 +407,6 @@ BalanceWindow is a simple and intuitive tool that provides users with quick and 
 - **Description**: This window is used for withdrawing funds from the user's account. This functionality is visible in the code in the PaycheckWindow class, where the user enters the amount they wish to withdraw and then confirms the operation with the "ENTER" button.
 
 - **Functionality**:
-
   - Text Field: Where the user can enter the withdrawal amount.
   - "ENTER" Button: Used to confirm the entered amount and initiate the withdrawal operation.
   - Navigation Buttons: Allow the user to return to the main menu ("RETURN TO THE MENU WINDOW") or the main application screen ("SLIDE CARD AND RETURN TO THE DASHBOARD").
@@ -451,13 +432,11 @@ and Its Functionality\*\*:
 - **Description**: The "PaymentWindow" operates similarly to PaycheckWindow but is used for depositing money into the user's account. The user enters the amount to deposit and confirms the operation.
 
 - **Functionality**:
-
   - Text Field: Where the user can enter the deposit amount.
   - "ENTER" Button: Used to confirm the entered amount and initiate the deposit operation.
   - Navigation Buttons: Allow the user to return to the main menu ("RETURN TO THE MENU WINDOW") or the main application screen ("SLIDE CARD AND RETURN TO THE DASHBOARD").
 
 - **Code and Its Functionality**:
-
   - The PaymentWindow class uses methods such as depositMoney() to process the deposit of funds.
   - It checks if the entered amount is valid and if the operation can be executed.
   - It updates the account balance in the database using SQL queries.
@@ -478,7 +457,6 @@ Both dialog windows are designed in a simple and intuitive manner, facilitating 
 - **Description**: HistoryWindow is a window in the banking application that displays the transaction history made by the user.
 
 - **Main Elements of HistoryWindow**:
-
   - "TRANSACTION HISTORY" Header: Informs the user that they are in the transaction history section.
   - "ACCOUNT STATEMENT" Table: Displays a list of transactions including transaction ID, card ID, transaction type (deposit, withdrawal), amount, and date.
   - "EDIT", "DELETE", "CLEAR" Buttons:
@@ -490,7 +468,6 @@ Both dialog windows are designed in a simple and intuitive manner, facilitating 
     - SLIDE CARD AND RETURN TO THE DASHBOARD: Enables exit from the current view and return to the main application menu (Dashboard).
 
 - **Code and Its Functionality**: In the code, the HistoryWindow class is responsible for displaying the user's transaction history. It uses a connection to the database to retrieve the transaction history and displays it in a table. The functionality of this class includes:
-
   - Loading transaction history: The loadTransactionHistory() method retrieves and displays transactions from the database.
   - Editing and deleting transactions: The "EDIT" and "DELETE" buttons are connected to functions that allow for modifying and deleting records from the table. Deleting a record is also reflected in the database.
   - Clearing data: The "CLEAR" button allows for clearing data from the table, but not necessarily from the database.
@@ -520,7 +497,6 @@ login, the user is directed to the Dashboard, which serves as a navigation hub, 
   - **PaymentWindow**: Allows for the deposit of money into the user's account.
   - **HistoryWindow**: Presents the user with their transaction history, providing insight into account activity and enabling transaction management.
 - **Data Management**:
-
   - Export and import of data in CSV format, allowing for backup and data transfer between systems.
   - Editing and deleting records in the transaction history, facilitating order and precise tracking of financial activity.
 

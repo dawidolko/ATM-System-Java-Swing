@@ -8,8 +8,6 @@
 
 ### Autor:Dawid Olko | nr albumu: 125148 |Kierunek: Informatyka, grupa lab 3
 
-### Rzeszów 2024
-
 ## Spis treści
 
 1. [Opis założeń projektu](#1-opis-założeń-projektu)
@@ -19,8 +17,6 @@
 5. [Prezentacja warstwy użytkowej projektu](#5-prezentacja-warstwy-użytkowej-projektu)
 6. [Podsumowanie](#6-podsumowanie)
 7. [Literatura](#7-literatura)
-
-
 
 # 1. Opis założeń projektu
 
@@ -59,42 +55,34 @@ Każda z tych funkcji jest zaimplementowana z myślą o maksymalnej wygodzie i i
 ### 2.1. Wymagania funkcjonalne
 
 - **Autentykacja Użytkownika:**
-
   - Weryfikacja posiadacza karty na podstawie numeru PIN zapisanego w bazie danych.
   - Blokada karty po trzech nieudanych próbach wprowadzenia PIN.
 
 - **Obsługa różnych typów kart:**
-
   - Akceptacja wielu typów kart bankowych, w tym Visa, Mastercard, American Express, Visa Electron, Diners Club i Japan Credit Bureau.
   - Dynamiczne rozpoznawanie typu karty na podstawie danych wprowadzonych przez użytkownika.
 
 - **Operacje na koncie:**
-
   - Sprawdzenie salda konta z wykorzystaniem informacji z tabeli `stan_konta`.
   - Wypłata gotówki z aktualizacją salda w bazie danych.
   - Wpłata gotówki z aktualizacją salda w bazie danych.
   - Wyświetlanie historii transakcji, korzystając z danych z tabeli `tablehistory`.
 
 - **Zarządzanie danymi:**
-
   - Eksport danych z bazy do pliku, co umożliwia łatwe przywracanie i przenoszenie danych.
   - Import danych do bazy z pliku, co pozwala na przywracanie stanu aplikacji.
 
 - **Bezpieczeństwo:**
-
   - Szyfrowanie danych wrażliwych podczas transmisji między aplikacją a bazą danych.
   - Mechanizmy zapobiegające atakom, z zastosowaniem `passwordField` dla ukrycia PIN.
 
 - **Uwierzytelnianie Użytkownika:**
-
   - System musi umożliwić autoryzację użytkownika za pomocą karty bankowej i kodu PIN.
 
 - **Transakcje Finansowe:**
-
   - Bankomat powinien obsługiwać podstawowe operacje bankowe, takie jak wypłata gotówki, sprawdzanie salda, wpłata gotówki oraz zapisywanie potwierdzenia transakcji w bazie.
 
 - **Bezpieczeństwo i Audyt:**
-
   - Powinna być możliwość śledzenia wszystkich operacji na bankomacie oraz zapewnienie zgodności z wymogami bezpieczeństwa.
 
 - **Interfejs użytkownika:**
@@ -104,40 +92,31 @@ Każda z tych funkcji jest zaimplementowana z myślą o maksymalnej wygodzie i i
 ### 2.2. Wymagania niefunkcjonalne
 
 - **Wydajność:**
-
   - Szybka i efektywna odpowiedź na zapytania użytkownika bez długich oczekiwań.
   - Optymalizacja zapytań do bazy danych dla zapewnienia płynności działania.
 
 - **Użyteczność:**
-
   - Intuicyjny interfejs użytkownika, który jest łatwy w nawigacji nawet dla osób niezaznajomionych z technologią.
   - Czytelna i estetyczna prezentacja informacji.
 
 - **Skalowalność:**
-
   - Łatwość w dodawaniu nowych funkcji i obsługi większej liczby użytkowników bez degradacji wydajności.
 
 - **Dostępność:**
-
   - Aplikacja musi być dostępna bez błędów na wspieranych systemach operacyjnych.
   - Mechanizmy odzyskiwania po awarii w celu minimalizacji przestojów.
 
 - **Modułowość:**
-
   - Struktura aplikacji podzielona na moduły, co ułatwia zarządzanie kodem i wprowadzanie zmian.
 
 - **Nieprzerwana Dostępność:**
-
   - Bankomat powinien być dostępny 24/7/365, z minimalnym czasem przestoju.
 
 - **Bezpieczeństwo:**
-
   - Musi zawierać zaawansowane mechanizmy szyfrowania i autoryzacji dwuskładnikowej, aby zapewnić bezpieczeństwo transakcji.
 
 - **Testowalność:**
   - Możliwość przeprowadzenia pełnej gamy testów (jednostkowych, integracyjnych, systemowych, akceptacyjnych) w celu zapewnienia jakości i niezawodności.
-
-
 
 # 3. Opis struktury projektu
 
@@ -361,7 +340,6 @@ Ogólna Analiza: PinWindow jest kluczowym elementem aplikacji bankowej, który z
 - **Nagłówek "WELCOME TO YOUR ACCOUNT"**: Przywitanie użytkownika i potwierdzenie, że został pomyślnie zautoryzowany.
 
 - **Sekcja "SELECT OPERATION"**: Lista opcji, z których użytkownik może wybrać:
-
   - CHECK YOUR ACCOUNT STATE: Pozwala użytkownikowi sprawdzić bieżący stan swojego konta, takie jak saldo.
 
   - CASH PAYCHECK: Funkcja umożliwiająca użytkownikowi wypłatę środków z konta.
@@ -417,13 +395,11 @@ BalanceWindow to proste i intuicyjne narzędzie, które umożliwia użytkownikom
 - **Opis**: Okno to służy do wypłaty środków z konta użytkownika. Funkcjonalność ta jest widoczna w kodzie w klasie PaycheckWindow, gdzie użytkownik wpisuje kwotę, którą chce wypłacić, a następnie potwierdza operację przyciskiem "ENTER".
 
 - **Funkcjonalność**:
-
   - Pole tekstowe: Miejsce, gdzie użytkownik może wpisać kwotę do wypłaty.
   - Przycisk "ENTER": Służy do zatwierdzenia wprowadzonej kwoty i inicjacji operacji wypłaty.
   - Przyciski nawigacyjne: Pozwalają użytkownikowi na powrót do głównego menu ("RETURN TO THE MENU WINDOW") lub do głównego ekranu aplikacji ("SLIDE CARD AND RETURN TO THE DASHBOARD").
 
 - **Kod i Jego Funkcjonalność**:
-
   - Klasa PaycheckWindow wykorzystuje metody takie jak withdrawMoney() do przetwarzania wypłaty środków.
   - Sprawdza, czy wprowadzona kwota jest prawidłowa i czy stan konta pozwala na realizację transakcji.
   - Aktualizuje stan konta w bazie danych za pomocą zapytań SQL.
@@ -441,13 +417,11 @@ BalanceWindow to proste i intuicyjne narzędzie, które umożliwia użytkownikom
 - **Opis**: Okno „PaymentWindow” działa podobnie do PaycheckWindow, ale służy do wpłacania pieniędzy na konto użytkownika. Użytkownik wpisuje kwotę do wpłaty i potwierdza operację.
 
 - **Funkcjonalność**:
-
   - Pole tekstowe: Miejsce, gdzie użytkownik może wpisać kwotę do wpłaty.
   - Przycisk "ENTER": Służy do zatwierdzenia wprowadzonej kwoty i inicjacji operacji wpłaty.
   - Przyciski nawigacyjne: Pozwalają użytkownikowi na powrót do głównego menu ("RETURN TO THE MENU WINDOW") lub do głównego ekranu aplikacji ("SLIDE CARD AND RETURN TO THE DASHBOARD").
 
 - **Kod i Jego Funkcjonalność**:
-
   - Klasa PaymentWindow wykorzystuje metody takie jak depositMoney() do przetwarzania wpłaty środków.
   - Sprawdza, czy wprowadzona kwota jest prawidłowa i czy operacja może być zrealizowana.
   - Aktualizuje stan konta w bazie danych za pomocą zapytań SQL.
@@ -468,7 +442,6 @@ Oba okna dialogowe są zaprojektowane w sposób prosty i intuicyjny, co sprzyja 
 - **Opis**: HistoryWindow jest oknem w aplikacji bankowej, które wyświetla historię transakcji przeprowadzonych przez użytkownika.
 
 - **Główne Elementy HistoryWindow**:
-
   - Nagłówek "TRANSACTION HISTORY": Informuje użytkownika, że znajduje się w sekcji historii transakcji.
   - Tabela "ACCOUNT STATEMENT": Wyświetla listę transakcji zawierających ID transakcji, ID karty, typ transakcji (wpłata, wypłata), kwotę i datę.
   - Przyciski "EDIT", "DELETE", "CLEAR":
@@ -480,7 +453,6 @@ Oba okna dialogowe są zaprojektowane w sposób prosty i intuicyjny, co sprzyja 
     - SLIDE CARD AND RETURN TO THE DASHBOARD: Umożliwia wyjście z obecnego widoku i powrót do głównego menu aplikacji (Dashboard).
 
 - **Kod i Jego Funkcjonalność**: W kodzie, klasa HistoryWindow jest odpowiedzialna za wyświetlenie historii transakcji użytkownika. Używa ona połączenia z bazą danych do pobrania historii transakcji i wyświetla je w tabeli. Funkcjonalność tej klasy obejmuje:
-
   - Ładowanie historii transakcji: Metoda loadTransactionHistory() pobiera z bazy danych i wyświetla transakcje.
   - Edycja i usuwanie transakcji: Przyciski "EDIT" i "DELETE" są połączone z funkcjami, które pozwalają na modyfikowanie i usuwanie rekordów z tabeli. Usunięcie rekordu jest odzwierciedlone również w bazie danych.
   - Czyszczenie danych: Przycisk "CLEAR" pozwala na wyczyszczenie danych z tabeli, ale niekoniecznie usuwa je z bazy danych.
@@ -499,7 +471,6 @@ Oba okna dialogowe są zaprojektowane w sposób prosty i intuicyjny, co sprzyja 
 Cały program, który został opisany przez różne okna interfejsu użytkownika i odpowiadający im kod, jest kompleksowym systemem zarządzania kontem bankowym, prawdopodobnie przeznaczonym dla bankomatów lub aplikacji bankowych online.
 
 - **Główne Funkcje**:
-
   - **Autentykacja Użytkownika**: System rozpoczyna się od autentykacji użytkownika przy użyciu PinWindow, gdzie użytkownik musi wprowadzić swój kod PIN, aby uzyskać dostęp do swojego konta.
   - **Dashboard**: Po pomyślnym zalogowaniu się, użytkownik jest przenoszony do Dashboard, który działa jako centrum nawigacyjne, oferując różne opcje, takie jak wyświetlanie salda, wypłaty, wpłaty i historii transakcji.
   - **Operacje Konta**:
@@ -516,8 +487,6 @@ Cały program, który został opisany przez różne okna interfejsu użytkownika
 - **Użytkownik i Interfejs**: Interfejs użytkownika został zaprojektowany z myślą o prostocie i intuicyjności, co pozwala użytkownikowi na łatwe nawigowanie i wykonanie potrzebnych operacji finansowych bez konieczności zaawansowanej wiedzy technicznej.
 
 Program jako całość stanowi kompletny system do zarządzania kontem bankowym, który integruje kluczowe funkcje wymagane dla nowoczesnych aplikacji bankowych. Zapewnia on użytkownikowi kontrolę nad swoimi finansami poprzez proste w użyciu narzędzia do monitorowania i zarządzania swoimi środkami oraz historią transakcji. Jest to przykład dobrze zintegrowanego oprogramowania, które skupia się na użytkowniku i jego potrzebach, zapewniając przy tym bezpieczeństwo i zaufanie do przeprowadzanych operacji finansowych.
-
-
 
 # 6. Podsumowanie
 
