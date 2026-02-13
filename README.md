@@ -1,6 +1,6 @@
-# Object-Oriented Programming Project
+# Object-Oriented Programming Project |
 
-## ATM Operation Simulation System
+## ATM Operation Simulation System |
 
 ### Author: Dawid Olko | Student ID: 125148 | Field of study: Computer Science, lab group 3
 
