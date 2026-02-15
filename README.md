@@ -1,4 +1,4 @@
-# Object-Oriented Programming Project |
+# Object-Oriented Programming Project | 
 
 ## ATM Operation Simulation System |
 
