@@ -1,0 +1,39 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: atm-db
+    environment:
+      MYSQL_DATABASE: atm
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: atm
+      MYSQL_PASSWORD: atm
+    ports:
+      - "3308:3306"
+    volumes:
+      - atm-db-data:/var/lib/mysql
+      # Zrzuty tabel wykonuja sie przy pierwszym starcie bazy.
+      - ../../database/karty.sql:/docker-entrypoint-initdb.d/01-karty.sql:ro
+      - ../../database/stan_konta.sql:/docker-entrypoint-initdb.d/02-stan_konta.sql:ro
+      - ../../database/tablehistory.sql:/docker-entrypoint-initdb.d/03-tablehistory.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  app:
+    build:
+      context: ../../
+      dockerfile: .tools/docker/Dockerfile
+    container_name: atm-app
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - DISPLAY=${DISPLAY:-:0}
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    network_mode: host
+
+volumes:
+  atm-db-data:
