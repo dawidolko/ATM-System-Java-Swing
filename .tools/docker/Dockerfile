@@ -1,14 +1,14 @@
-# System bankomatu w Java Swing. Projekt nie uzywa Mavena ani Gradle'a —
-# zrodla kompilujemy bezposrednio javac. Kontener sluzy jako powtarzalne
-# srodowisko budowania; GUI wymaga serwera X z hosta (patrz README.md).
+# ATM system in Java Swing. The project uses neither Maven nor Gradle, so the
+# sources are compiled directly with javac. The container is a repeatable build
+# environment; the GUI needs an X server on the host (see README.md).
 FROM eclipse-temurin:21-jdk AS build
 
 WORKDIR /build
 
 COPY public/src/ ./src/
 
-# Sterownik MySQL nie jest wersjonowany w repozytorium, wiec pobieramy go
-# na etapie budowania i dokladamy do classpath.
+# The MySQL driver is not versioned in the repository, so it is downloaded
+# at build time and added to the classpath.
 ADD https://repo1.maven.org/maven2/com/mysql/mysql-connector-j/8.4.0/mysql-connector-j-8.4.0.jar \
     /build/lib/mysql-connector-j.jar
 
@@ -17,7 +17,7 @@ RUN mkdir -p out \
 
 FROM eclipse-temurin:21-jre AS runtime
 
-# Biblioteki X11 potrzebne Swingowi do narysowania okna.
+# X11 libraries Swing needs to draw the window.
 RUN apt-get update && apt-get install -y --no-install-recommends \
         libxext6 \
         libxrender1 \

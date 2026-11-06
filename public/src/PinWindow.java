@@ -23,14 +23,17 @@ public class PinWindow extends JFrame{
     private JPanel panelComainPin;
     private JPanel panelEndPin;
     private JPanel panelImagePin;
-    private String selectedCardType; // Dodano zmienną do przechowywania typu karty
+    /*
+     * Stores the card type
+     */
+    private String selectedCardType;
     private int selectedCardId;
     private static int failedAttempts = 0;
     private static long lockoutEndTime = 0;
 
     public PinWindow(String selectedCardType, int selectedCardId) {
         super("Pin Window");
-        this.selectedCardType = selectedCardType; // Ustaw wybrany typ karty
+        this.selectedCardType = selectedCardType;
         this.selectedCardId = selectedCardId;
         this.setContentPane(panelPin);
         this.pack();
@@ -116,9 +119,13 @@ public class PinWindow extends JFrame{
 
 
     private void checkPin(String enteredPin) {
-        // Sprawdź, czy użytkownik jest obecnie zablokowany i czy okres blokady minął.
+        /*
+         * Check whether the user is currently locked out and whether the lockout has expired.
+         */
         if (System.currentTimeMillis() < lockoutEndTime) {
-            // Użytkownik jest nadal zablokowany, więc informujemy go, jak długo musi jeszcze czekać.
+            /*
+             * Still locked out: tell the user how long they have to wait.
+             */
             long timeLeft = (lockoutEndTime - System.currentTimeMillis()) / 1000;
             JOptionPane.showMessageDialog(this, "Twoje konto jest zablokowane na wpisywanie hasła. Pozostało " + timeLeft + " sekund.", "Konto Zablokowane", JOptionPane.ERROR_MESSAGE);
             return;
@@ -132,24 +139,34 @@ public class PinWindow extends JFrame{
                 if (resultSet.next()) {
                     String correctPin = resultSet.getString("PIN");
                     if (correctPin.equals(enteredPin)) {
-                        // Resetowanie licznika prób i końca czasu blokady
+                        /*
+                         * Reset the attempt counter and the lockout end time
+                         */
                         failedAttempts = 0;
                         lockoutEndTime = 0;
 
-                        // Przejście do MenuWindow
+                        /*
+                         * Go to MenuWindow
+                         */
                         SwingUtilities.invokeLater(() -> {
                             MenuWindow menuWindow = new MenuWindow(selectedCardId);
                             menuWindow.setVisible(true);
                         });
-                        dispose(); // Zamknięcie bieżącego okna
+                        dispose();
                     } else {
-                        // Inkrementacja licznika prób i ewentualna blokada
+                        /*
+                         * Increment the attempt counter and lock out if needed
+                         */
                         failedAttempts++;
                         if (failedAttempts >= 3) {
-                            // Ustawienie czasu blokady na 3 minuty
+                            /*
+                             * Lock out for 3 minutes
+                             */
                             lockoutEndTime = System.currentTimeMillis() + (3 * 60 * 1000);
                             JOptionPane.showMessageDialog(this, "Masz blokadę na wpisywanie hasła, zostaniesz przeniesiony do dashboardu.", "Zablokowano dostęp", JOptionPane.ERROR_MESSAGE);
-                            // Przekierowanie do dashboardu lub inna logika
+                            /*
+                             * Redirect to the dashboard or other logic
+                             */
                         } else {
                             JOptionPane.showMessageDialog(this, "Nieprawidłowy PIN. Pozostało prób: " + (3 - failedAttempts), "Błąd", JOptionPane.ERROR_MESSAGE);
                         }

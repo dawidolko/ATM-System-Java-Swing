@@ -55,5 +55,5 @@ Jesli zalezy Ci wylacznie na sprawdzeniu, ze projekt sie kompiluje, samo
 
 ```bash
 docker compose down
-docker compose down -v   # usuwa takze wolumen bazy
+docker compose down -v   # also removes the database volume
 ```

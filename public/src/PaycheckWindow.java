@@ -44,7 +44,10 @@ public class PaycheckWindow extends JFrame{
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    enterButtonPaycheck.doClick(); // Symuluje kliknięcie przycisku Enter
+                    /*
+                     * Simulates clicking the Enter button
+                     */
+                    enterButtonPaycheck.doClick();
                 }
             }
         });
@@ -77,7 +80,7 @@ public class PaycheckWindow extends JFrame{
             if (amountToWithdraw <= currentBalance && amountToWithdraw > 0) {
                 double newBalance = currentBalance - amountToWithdraw;
                 if (updateBalance(newBalance)) {
-                    recordTransaction("WITHDRAW", amountToWithdraw); // Dodajemy tę linijkę
+                    recordTransaction("WITHDRAW", amountToWithdraw);
                     JOptionPane.showMessageDialog(this, "Wypłacono: " + amountToWithdraw + " PLN.\nNowy stan konta: " + newBalance + " PLN.");
                 } else {
                     JOptionPane.showMessageDialog(this, "Błąd przy aktualizacji salda.", "Błąd", JOptionPane.ERROR_MESSAGE);

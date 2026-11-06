@@ -32,7 +32,10 @@ public class Dashboard extends JFrame{
     private JButton exportButton;
     private JButton importButton;
     private JSlider slider1;
-    private static Clip clip; // Zmienna do kontrolowania dźwięku
+    /*
+     * Controls sound playback
+     */
+    private static Clip clip;
     private static boolean isLockedOut = false;
     private static long lockoutEndTime;
 
@@ -49,11 +52,11 @@ public class Dashboard extends JFrame{
         radioButtonGroup.add(CREDITCARDRadioButton1);
 
         try (Connection connection = DatabaseConnector.connect()) {
-            String query = "SELECT id, typ FROM karty"; // Dodajemy "id" do zapytania
+            String query = "SELECT id, typ FROM karty";
             try (Statement statement = connection.createStatement();
                  ResultSet resultSet = statement.executeQuery(query)) {
                 while (resultSet.next()) {
-                    int cardId = resultSet.getInt("id"); // Pobieramy ID karty
+                    int cardId = resultSet.getInt("id");
                     String cardType = resultSet.getString("typ");
                     comboBoxCard.addItem(cardType);
 
@@ -93,7 +96,10 @@ public class Dashboard extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (clip != null && clip.isRunning()) {
-                    clip.stop(); // Zatrzymaj dźwięk przed zamknięciem
+                    /*
+                     * Stop the sound before closing
+                     */
+                    clip.stop();
                 }
                 dispose();
             }
@@ -190,7 +196,7 @@ public class Dashboard extends JFrame{
 
         try (Connection connection = DatabaseConnector.connect()) {
             connection.prepareStatement("SET FOREIGN_KEY_CHECKS=0").execute();
-            connection.setAutoCommit(false); // Rozpocznij transakcję
+            connection.setAutoCommit(false);
 
             try (PreparedStatement deleteStatement = connection.prepareStatement("DELETE FROM " + tableName)) {
                 deleteStatement.executeUpdate();
@@ -214,7 +220,10 @@ public class Dashboard extends JFrame{
                 while ((line = br.readLine()) != null) {
                     String[] values = line.split(",");
                     for (int i = 0; i < values.length; i++) {
-                        insertStatement.setString(i + 1, values[i].trim()); // Użyj metody trim() aby usunąć białe znaki
+                        /*
+                         * Use trim() to remove whitespace
+                         */
+                        insertStatement.setString(i + 1, values[i].trim());
                     }
                     insertStatement.executeUpdate();
                 }
@@ -238,9 +247,14 @@ public class Dashboard extends JFrame{
     public static void playSound() {
         try {
             if (clip != null && clip.isRunning()) {
-                clip.stop(); // zatrzymaj dźwięk, jeśli już gra
+                /*
+                 * Stop the sound if it is already playing
+                 */
+                clip.stop();
             }
-            // Reszta kodu do ładowania i odtwarzania dźwięku...
+            /*
+             * The rest of the sound loading and playback code...
+             */
         } catch (Exception e) {
             e.printStackTrace();
         }

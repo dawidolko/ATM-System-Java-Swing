@@ -13,7 +13,7 @@ services:
       - "3308:3306"
     volumes:
       - atm-db-data:/var/lib/mysql
-      # Zrzuty tabel wykonuja sie przy pierwszym starcie bazy.
+      # Table dumps run on the first database start.
       - ../../database/karty.sql:/docker-entrypoint-initdb.d/01-karty.sql:ro
       - ../../database/stan_konta.sql:/docker-entrypoint-initdb.d/02-stan_konta.sql:ro
       - ../../database/tablehistory.sql:/docker-entrypoint-initdb.d/03-tablehistory.sql:ro

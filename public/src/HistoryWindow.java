@@ -58,8 +58,11 @@ public class HistoryWindow extends JFrame{
 
     private void toggleTableEditable() {
         MyTableModel myModel = (MyTableModel) tableHistory.getModel();
-        myModel.setCellEditable(!myModel.editable); // Zmiana stanu na przeciwny.
-        tableHistory.repaint(); // Odświeżenie tabeli, aby zmiany były widoczne.
+        myModel.setCellEditable(!myModel.editable);
+        /*
+         * Refresh the table so the changes are visible.
+         */
+        tableHistory.repaint();
     }
 
     private void deleteSelectedTransaction() {
@@ -106,7 +109,7 @@ public class HistoryWindow extends JFrame{
         try (Connection connection = DatabaseConnector.connect();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
-            preparedStatement.setInt(1, this.selectedCardId); // Ustawianie ID karty
+            preparedStatement.setInt(1, this.selectedCardId);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
