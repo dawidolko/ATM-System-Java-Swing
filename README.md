@@ -58,6 +58,12 @@ private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/atm";
 
 ---
 
+## 🎬 Demo
+
+[![Watch the demo on YouTube](https://img.youtube.com/vi/PrwN3nVvUKE/hqdefault.jpg)](https://www.youtube.com/watch?v=PrwN3nVvUKE)
+
+---
+
 ## 🛠️ Technology Stack
 
 | Technology                | Role                                                        |
